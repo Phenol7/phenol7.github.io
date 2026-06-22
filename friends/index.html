@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>友链 | Ph- H 的小窝</title>
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/loader.css">
+
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+
+</head>
+<body changing-title class="page-friends">
+  <div id="loader">
+    <svg class="hexagon-svg" viewBox="-140 -140 280 280">
+      <path class="hexagon-path" d="M -112.58,-65 L 0,-130 L 112.58,-65 L 112.58,65 L 0,130 L -112.58,65 Z" />
+      <path class="hexagon-inner" d="M 1.99,-103.45 L 88.59,-53.45" />
+      <path class="hexagon-inner" d="M 88.59,53.45 L 1.99,103.45" />
+      <path class="hexagon-inner" d="M -90.58,50 L -90.58,-50" />
+    </svg>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <a href="/" class="sidebar-link">
+        <img src="/resources/Ph-H.png" alt="avatar" class="sidebar-avatar">
+      </a>
+      <span class="sidebar-nickname"><b>⌬ a.k.a Ph- H</b></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-nav-indicator"></div>
+      <a href="/" class="sidebar-nav-item">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-8.5Z"></path>
+        </svg>
+        <span class="sidebar-nav-text">首页</span>
+      </a>
+      <a href="/posts/" class="sidebar-nav-item">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 4h16v2H4V4Zm0 4h16v2H4V8Zm0 4h10v2H4v-2Zm0 4h8v2H4v-2Z"></path>
+        </svg>
+        <span class="sidebar-nav-text">文章</span>
+      </a>
+      <a href="/archives/" class="sidebar-nav-item">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 4h18v4H3zM4 10h16l-1.5 10a2 2 0 0 1-2 2H7.5a2 2 0 0 1-2-2L4 10Zm5 3v2h6v-2H9Z"></path>
+        </svg>
+        <span class="sidebar-nav-text">归档</span>
+      </a>
+      <a href="/about/" class="sidebar-nav-item">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 8v1M12 12v4"></path>
+        </svg>
+        <span class="sidebar-nav-text">关于</span>
+      </a>
+      <a href="/friends/" class="sidebar-nav-item active">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 4c2 0 4 1.5 4 4s-2 4-4 4-4-1.5-4-4 2-4 4-4Z"></path>
+        </svg>
+        <span class="sidebar-nav-text">友链</span>
+      </a>
+      <a href="/search/" class="sidebar-nav-item">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+        <span class="sidebar-nav-text">搜索</span>
+      </a>
+    </nav>
+  </div>
+  <div class="darkmode-toggle">
+    <input type="checkbox" id="darkmode-switch">
+    <label for="darkmode-switch" class="toggle-label">
+      <span class="toggle-knob"></span>
+    </label>
+  </div>
+  <div class="container">
+    <div class="frame-card">
+      <h1 class="friends-card-title">FRIENDS | 友链</h1>
+      <div class="friends-grid">
+        <a href="http://umu.gloomyghost.com" target="_blank" rel="noopener" class="friend-card">
+          <div class="friend-name">test</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; <span id="year"></span> Ph- H</p>
+  </footer>
+  <script src="/js/loader.js"></script>
+  <script src="/js/sidebar.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/changing-title.js"></script>
+  <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

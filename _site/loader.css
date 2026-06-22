@@ -1,0 +1,62 @@
+/* 首次进入加载动画 */
+#loader
+{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+#loader.fade-out
+{
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loader.active
+{
+  display: flex;
+}
+
+.hexagon-svg
+{
+  width: 280px;
+  height: 280px;
+}
+
+.hexagon-path
+{
+  fill: none;
+  stroke: #222;
+  stroke-width: 4;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  stroke-dasharray: 780;
+  stroke-dashoffset: 780;
+}
+
+.hexagon-inner
+{
+  fill: none;
+  stroke: #222;
+  stroke-width: 4;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+@keyframes drawHex
+{
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawInner
+{
+  to { stroke-dashoffset: 0; }
+}

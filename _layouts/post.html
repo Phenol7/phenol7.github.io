@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<article class="post-article">
+  <div class="container">
+    <header class="article-header">
+      <h1 class="article-title">{{ page.title }}</h1>
+      <div class="article-meta">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y 年 %-m 月 %-d 日' }}</time>
+        <div class="article-tags">
+          {% for tag in page.tags %}
+          <span class="post-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </header>
+    <div class="article-content">
+      {{ content }}
+    </div>
+    <nav class="article-nav">
+      <span class="article-nav-prev">← 上一篇</span>
+      <a href="/posts/" class="article-nav-back">返回文章列表</a>
+      <span class="article-nav-next">下一篇 →</span>
+    </nav>
+  </div>
+</article>

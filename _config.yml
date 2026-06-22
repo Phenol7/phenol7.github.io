@@ -1,0 +1,12 @@
+title: Ph- H 的小窝
+description: 记录学习与生活
+baseurl: ""
+permalink: /posts/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      body_class: "page-article"
