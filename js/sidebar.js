@@ -3,14 +3,12 @@ document.addEventListener('DOMContentLoaded', function ()
   /* 清除 Turbo 导航残留的淡出状态 */
   document.body.classList.remove('page-leaving');
 
-  /* Sidebar 展开/收起 + 滑动指示器 */
   var sidebar = document.querySelector('.sidebar');
   if (!sidebar) return;
 
   var sidebarNav = sidebar.querySelector('.sidebar-nav');
   var indicator = sidebarNav && sidebarNav.querySelector('.sidebar-nav-indicator');
 
-  /* 将指示器定位到当前 active 标签 */
   function positionIndicator(animated)
   {
     var activeItem = sidebarNav && sidebarNav.querySelector('.sidebar-nav-item.active');
@@ -26,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function ()
     indicator.style.height = linkRect.height + 'px';
   }
 
-  /* 点击 sidebar 内任何链接：统一处理 */
+  /* sidebar 内任何链接统一处理 */
   sidebar.addEventListener('click', function(e)
   {
     var link = e.target.closest('a');
@@ -35,10 +33,8 @@ document.addEventListener('DOMContentLoaded', function ()
     var isNavLink = sidebarNav && sidebarNav.contains(link);
     var isNavActive = isNavLink && link.classList.contains('active');
 
-    /* 点击当前页面标签：什么也不做 */
     if (isNavActive) return;
 
-    /* 点击非 active 的导航标签：滑动指示器 + 灰色底收起 + 延迟跳转 */
     if (isNavLink && !isNavActive)
     {
       e.preventDefault();
@@ -51,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function ()
       }
       link.classList.add('active');
 
-      /* 内容淡出（0.15s）与指示器滑动同步 */
       document.body.classList.add('page-leaving');
 
       var linkRect = link.getBoundingClientRect();
@@ -69,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function ()
         window.location.href = link.href;
       }, 300);
     }
-    /* avatar 或 active 标签：正常跳转（即时，不存在延迟间隙） */
     else if (sidebar.classList.contains('expanded'))
     {
       sessionStorage.setItem('sidebarExpanded', '1');
@@ -96,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function ()
   {
     function checkFirstMove(e)
     {
-      /* 加载动画播放期间不展开 sidebar */
       var loader = document.getElementById('loader');
       if (loader && loader.style.display !== 'none' &&
           !loader.classList.contains('fade-out')) return;

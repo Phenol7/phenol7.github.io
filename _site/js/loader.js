@@ -3,11 +3,9 @@ document.addEventListener('DOMContentLoaded', function ()
   var loader = document.getElementById('loader');
   if (!loader) return;
 
-  /* 已访问过则跳过动画 */
   var visited = sessionStorage.getItem('visited');
   if (visited)
   {
-    /* F5 刷新则仍播放 */
     var isReload = false;
     try { var nav = performance.getEntriesByType('navigation')[0]; if (nav) isReload = (nav.type === 'reload'); } catch(e) {}
     if (!isReload) return;

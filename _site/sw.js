@@ -2,7 +2,7 @@ const CACHE_NAME = 'phenol-site-v3';
 
 self.addEventListener('install', function(e)
 {
-  /* 预缓存核心页面，首次访问时必备 */
+  /* 预缓存页面 */
   self.skipWaiting();
   e.waitUntil(
     caches.open(CACHE_NAME).then(function(cache)
@@ -22,7 +22,7 @@ self.addEventListener('fetch', function(e)
   e.respondWith(
     caches.match(e.request).then(function(cached)
     {
-      /* 并发：从缓存返回（瞬间）+ 后台拉取新版本更新缓存 */
+      /* 并发：从缓存返回 + 后台拉取新版本更新缓存 */
       var fetchPromise = fetch(e.request).then(function(response)
       {
         if (response && response.status === 200)
