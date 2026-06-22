@@ -150,22 +150,22 @@ footer p
 
 .page-article .container
 {
-  max-width: 1440px;
+  max-width: 1300px;
 }
 
 .page-posts .container
 {
-  max-width: 1440px;
+  max-width: 1300px;
 }
 
 .page-archives .container
 {
-  max-width: 1440px;
+  max-width: 1300px;
 }
 
 .frame-card 
 {
-  max-width: 1440px;
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
   padding: 32px 28px;
@@ -341,7 +341,7 @@ footer p
 
 .friends-card
 {
-  max-width: 1440px;
+  max-width: 1300px;
   width: 100%;
   margin: 0 auto;
   background: #fff;
@@ -389,7 +389,7 @@ footer p
 .search-wrapper
 {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1300px;
   margin: 0 auto;
   text-align: center;
 }
