@@ -1,28 +1,18 @@
-const CACHE_NAME = 'phenol-site-v2';
-const URLS_TO_CACHE = [
-  '/',
-  '/posts/',
-  '/archives/',
-  '/about/',
-  '/friends/',
-  '/search/',
-  '/index.css',
-  '/loader.css',
-  '/posts/style.css',
-  '/js/sidebar.js',
-  '/js/index.js',
-  '/js/loader.js',
-  '/js/changing-title.js',
-  '/resources/Ph-H.png',
-  '/favicon/favicon.ico'
-];
+const CACHE_NAME = 'phenol-site-v3';
 
 self.addEventListener('install', function(e)
 {
+  /* 预缓存核心页面，首次访问时必备 */
+  self.skipWaiting();
   e.waitUntil(
     caches.open(CACHE_NAME).then(function(cache)
     {
-      return cache.addAll(URLS_TO_CACHE);
+      return cache.addAll([
+        '/', '/posts/', '/archives/', '/about/', '/friends/', '/search/',
+        '/index.css', '/loader.css', '/posts/style.css',
+        '/js/sidebar.js', '/js/index.js', '/js/loader.js', '/js/changing-title.js',
+        '/resources/Ph-H.png', '/favicon/favicon.ico'
+      ]);
     })
   );
 });
@@ -30,9 +20,20 @@ self.addEventListener('install', function(e)
 self.addEventListener('fetch', function(e)
 {
   e.respondWith(
-    caches.match(e.request).then(function(response)
+    caches.match(e.request).then(function(cached)
     {
-      return response || fetch(e.request);
+      /* 并发：从缓存返回（瞬间）+ 后台拉取新版本更新缓存 */
+      var fetchPromise = fetch(e.request).then(function(response)
+      {
+        if (response && response.status === 200)
+        {
+          var copy = response.clone();
+          caches.open(CACHE_NAME).then(function(cache) { cache.put(e.request, copy); });
+        }
+        return response;
+      }).catch(function() { return cached; });
+
+      return cached || fetchPromise;
     })
   );
 });
@@ -43,8 +44,8 @@ self.addEventListener('activate', function(e)
     caches.keys().then(function(names)
     {
       return Promise.all(
-        names.filter(function(name) { return name !== CACHE_NAME; })
-            .map(function(name) { return caches.delete(name); })
+        names.filter(function(n) { return n !== CACHE_NAME; })
+            .map(function(n) { return caches.delete(n); })
       );
     })
   );
